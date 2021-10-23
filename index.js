@@ -1,18 +1,31 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 5000;
+
+app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send("hello from node practice. I am Aal Emraan. This is my second project with node. and i want to become a full stack web developer. hello there!")
 });
 
+app.post('/users', (req, res) => {
+    const newUser = req.body;
+    newUser.id = users.length;
+    users.push(newUser);
+    console.log('hitting the post', req.body);
+    // res.send(JSON.stringify(newUser));
+    res.json(newUser);
+})
+
 const users = [
-    {id: 1 , name: "1aal emraan", age:23, study: "Physics"},
-    {id: 2 , name: "2aal emraan", age:23, study: "Physics"},
-    {id: 3 , name: "3aal emraan", age:23, study: "Physics"},
-    {id: 4 , name: "4aal emraan", age:23, study: "Physics"},
-    {id: 5 , name: "5aal emraan", age:23, study: "Physics"},
-    {id: 6 , name: "6aal emraan", age:23, study: "Physics"}
+    {id: 0 , name: "1aal emraan", age:23, study: "Physics"},
+    {id: 1 , name: "2aal emraan", age:23, study: "Physics"},
+    {id: 2 , name: "3aal emraan", age:23, study: "Physics"},
+    {id: 3 , name: "4aal emraan", age:23, study: "Physics"},
+    {id: 4 , name: "5aal emraan", age:23, study: "Physics"},
+    {id: 5 , name: "6aal emraan", age:23, study: "Physics"}
 ]
 
 // use query
